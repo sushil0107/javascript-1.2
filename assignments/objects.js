@@ -1,40 +1,72 @@
-const testObject = { name: 'Bruce Wayne', age: 36, location: 'Gotham' }; // use this object to test your functions
+const testObject = { name: 'Bruce Wayne', age: 36, location: 'Gotham' };
 
-// Complete the following underscore functions.
-// Reference http://underscorejs.org/ for examples.
+keys = (obj) => {
+  let arr = [];
+  for (let i in obj) {
+      arr.push(i);
+  }
+  return arr;
+}
+console.log(keys(testObject));
 
-function keys(obj) {
-  // Retrieve all the names of the object's properties.
-  // Return the keys as strings in an array.
-  // Based on http://underscorejs.org/#keys
+values = (obj) => {
+  let arr = [];
+  for (let i in obj){
+    arr.push(obj[i]);
+  }
+  return arr;
+}
+console.log(values(testObject));
+
+
+mapObject = (obj, cb) => {
+  for (let i in obj) {
+      cb(obj[i], i);
+  }
+  return obj;
 }
 
-function values(obj) {
-  // Return all of the values of the object's own properties.
-  // Ignore functions
-  // http://underscorejs.org/#values
+console.log(mapObject(testObject, (val) => val));
+
+
+pairs = (obj) => {
+  let arr = [];
+  for (let i in obj) {
+      arr.push([i, obj[i]]);
+  }
+  return arr;
 }
 
-function mapObject(obj, cb) {
-  // Like map for arrays, but for objects. Transform the value of each property in turn by passing it to the callback function.
-  // http://underscorejs.org/#mapObject
-}
-
-function pairs(obj) {
-  // Convert an object into a list of [key, value] pairs.
-  // http://underscorejs.org/#pairs
-}
+console.log(pairs(testObject));
 
 /* STRETCH PROBLEMS */
 
-function invert(obj) {
-  // Returns a copy of the object where the keys have become the values and the values the keys.
-  // Assume that all of the object's values will be unique and string serializable.
-  // http://underscorejs.org/#invert
+invert = (obj) => {
+  let arr = [],
+  temp;
+  for (let key in obj){
+    arr.push(key, obj[key]);
+  }
+  for (let i = 0; i < arr.length - 1; i += 2) {
+    temp = arr[i];
+    arr[i] = arr[i + 1];
+    arr[i + 1] = temp;
+  }
+  let newObj = {};
+  for (i = 0; i < arr.length - 1; i += 2)
+    newObj[arr[i]] = arr[i + 1];
+  return newObj;
 }
 
-function defaults(obj, defaultProps) {
-  // Fill in undefined properties that match properties on the `defaultProps` parameter object.
-  // Return `obj`.
-  // http://underscorejs.org/#defaults
+console.log(invert(testObject));
+
+
+defaults = (obj, defaultProps) => {
+  for (var i in defaultProps) {
+    if (obj.hasOwnProperty(i) == false) {
+      obj[key] = defaultProps[i];
+    }
+  }
+  return obj;
 }
+console.log(defaults(testObject, testObject));
