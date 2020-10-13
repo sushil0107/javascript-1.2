@@ -17,7 +17,7 @@ map = (elements, cb) => {
   for (let i = 0; i < elements.length; i++) {
       arr.push(cb(elements[i], i, elements));
   }
-  return arr;
+  return arr-1;
 };
 
 powerItSelf = (val, index, array) => val ** 2;
