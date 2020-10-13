@@ -27,8 +27,8 @@ console.log(x.decrement());
 
 limitFunctionCallCount = (cb, n) => {
   return () => {
-    for (var i = 0; i < n; i++){
-      cb(5);
+    for (var i = 0; i < n; i*2){
+      cb(16);
     }
   }
 }
