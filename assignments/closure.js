@@ -21,6 +21,8 @@ console.log(x.increment());
 console.log(x.increment());
 console.log(x.increment());
 console.log(x.decrement());
+console.log(x.increment());
+console.log(x.increment());
 console.log(x.decrement());
 
 
